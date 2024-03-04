@@ -27,7 +27,7 @@
                   <div class="card">
                     <div class="card-header">Base Image</div>
                     <div class="card-body">
-                      <label>Select image from hard drive to watermark</label>
+                      <label>Select Image to watermark</label>
                       <input
                         class="form-control"
                         type="file"
@@ -35,24 +35,6 @@
                         accept="image/*"
                       />
                     </div>
-                    <div class="card-body">
-                      <label>Or get image from URL</label>
-                      <input
-                        class="form-control"
-                        type="text"
-                        id="baseImageInput"
-                        placeholder="Enter Image URL, ex: https://example.com/image.jpg"
-                      />
-                    </div> 
-                    <div class="card-footer text-end bg-transparent">
-                      <button
-                        id="fetchImageButton"
-                        type="button"
-                        class="btn btn-primary"
-                      >
-                        Upload Image
-                      </button>
-                    </div>                    
                   </div>
                 </div>
 
@@ -221,30 +203,5 @@
       </div>
     </main>
     <script type="module" src="cloudwebgpt.com/tools/watermark/main.js"></script>
-        <script type="module">
-      document.getElementById("fetchImageButton").addEventListener("click", () => {
-        const imageUrl = document.getElementById("imageUrlInput").value;
-        const canvas = document.querySelector("canvas");
-        const ctx = canvas.getContext("2d");
-        const img = new Image();
-
-        if (!imageUrl) {
-          alert("Please enter a valid image URL.");
-          return;
-        }
-
-        img.onload = () => {
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx.drawImage(img, 0, 0);
-        };
-
-        img.onerror = () => {
-          alert("Failed to load the image. Please check the URL.");
-        };
-
-        img.src = imageUrl;
-      });
-    </script>
   </body>
 </html>
